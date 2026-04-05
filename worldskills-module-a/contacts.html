@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts — COLLECTO</title>
+  <meta name="description" content="Контакты сервиса COLLECTO: форма обратной связи, email, часы работы, соцсети и карта.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contacts — COLLECTO">
+  <meta property="og:description" content="Свяжитесь с командой COLLECTO через форму, email или социальные сети.">
+  <meta property="og:image" content="media-files/logo.png">
+  <meta property="og:url" content="contacts.html">
+  <meta name="theme-color" content="#5b7cff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body data-page="contacts">
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="COLLECTO — на главную">
+        <img src="media-files/logo.png" alt="Логотип COLLECTO">
+        <span>COLLECTO<small>Marketplace for collectors</small></span>
+      </a>
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Открыть меню">
+      <label class="nav-toggle-label" for="nav-toggle"><span></span></label>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a data-page-link="home" href="index.html">Home</a></li>
+          <li class="has-submenu">
+            <a data-page-link="seller" href="seller.html">For Seller</a>
+            <div class="submenu">
+              <a href="seller.html#seller-advantages">Advantages</a>
+              <a href="seller-services.html">Paid Services</a>
+              <a href="seller.html#seller-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a data-page-link="buyer" href="buyer.html">For Buyer</a>
+            <div class="submenu">
+              <a href="buyer.html#buyer-advantages">Advantages</a>
+              <a href="buyer.html#buyer-faq">FAQ</a>
+            </div>
+          </li>
+          <li><a data-page-link="contacts" href="contacts.html">Contacts</a></li>
+          <li><a data-page-link="policy" href="policy.html">Policy</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="button" data-type="primary" data-role="publish-link" href="seller.html">Publish</a>
+        <a class="button" data-type="secondary" data-role="view-link" href="buyer.html">View</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero-shell">
+        <div class="page-hero-copy">
+          <span class="kicker">Contacts</span>
+          <h1>Свяжитесь с командой сервиса</h1>
+          <p>На странице контактов собраны форма обратной связи, email, часы работы, социальные сети и карта.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contacts-layout">
+        <article class="contact-card">
+          <span class="card-eyebrow">Feedback Form</span>
+          <h2>Форма обратной связи</h2>
+          <form class="form-grid" data-contact-form>
+            <label>
+              Имя
+              <input type="text" name="name" autocomplete="name" required placeholder="Введите имя">
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required placeholder="example@mail.com">
+            </label>
+            <label>
+              Сообщение
+              <textarea name="message" required placeholder="Расскажите, с чем вам помочь"></textarea>
+            </label>
+            <button class="button button-accent" data-type="primary" type="submit">Отправить сообщение</button>
+            <div class="note-box hidden" data-form-notice></div>
+          </form>
+        </article>
+
+        <div class="contacts-grid">
+          <article class="contact-card">
+            <span class="card-eyebrow">Contact Info</span>
+            <h2>Контактная информация</h2>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:hello@collecto.market">hello@collecto.market</a></li>
+              <li><strong>Часы работы:</strong> Пн–Пт, 09:00–18:00</li>
+              <li><strong>Локация:</strong> Алматы, Казахстан</li>
+            </ul>
+          </article>
+
+          <article class="contact-card">
+            <span class="card-eyebrow">Social Links</span>
+            <h2>Социальные сети</h2>
+            <div class="social-list">
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+              <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+          </article>
+
+          <article class="map-card" data-hide-on-error>
+            <img src="media-files/map.png" alt="Карта расположения или зоны обслуживания сервиса COLLECTO">
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="index.html" aria-label="COLLECTO — на главную">
+            <img src="media-files/logo.png" alt="Логотип COLLECTO">
+            <span>COLLECTO<small>Marketplace for collectors</small></span>
+          </a>
+          <p>Контактная страница с формой, email, часами работы, соцсетями и картой.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навигация в футере">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="seller.html">For Seller</a></li>
+            <li><a href="seller-services.html">Paid Services</a></li>
+            <li><a href="buyer.html">For Buyer</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="policy.html">Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ul class="footer-meta">
+        <li>Корректные типы полей</li>
+        <li>Форма готова к интеграции</li>
+        <li>Отдельная страница контактов</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

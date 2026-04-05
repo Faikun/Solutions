@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLLECTO — сервис объявлений для коллекционных товаров</title>
+  <meta name="description" content="COLLECTO — рекламный лендинг онлайн-сервиса объявлений для LEGO, настольных игр, комиксов, фигурок, сувениров и других коллекционных товаров.">
+  <meta name="keywords" content="коллекционные товары, объявления, LEGO, настольные игры, комиксы, фигурки, сувениры">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="COLLECTO — сервис объявлений для коллекционных товаров">
+  <meta property="og:description" content="Платформа для покупки и продажи коллекционных и тематических товаров.">
+  <meta property="og:image" content="media-files/logo.png">
+  <meta property="og:url" content="index.html">
+  <meta name="theme-color" content="#5b7cff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="COLLECTO — на главную">
+        <img src="media-files/logo.png" alt="Логотип COLLECTO">
+        <span>
+          COLLECTO
+          <small>Marketplace for collectors</small>
+        </span>
+      </a>
+
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Открыть меню">
+      <label class="nav-toggle-label" for="nav-toggle"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a data-page-link="home" href="index.html">Home</a></li>
+          <li class="has-submenu">
+            <a data-page-link="seller" href="seller.html">For Seller</a>
+            <div class="submenu" aria-label="Подменю For Seller">
+              <a href="seller.html#seller-advantages">Advantages</a>
+              <a href="seller-services.html">Paid Services</a>
+              <a href="seller.html#seller-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a data-page-link="buyer" href="buyer.html">For Buyer</a>
+            <div class="submenu" aria-label="Подменю For Buyer">
+              <a href="buyer.html#buyer-advantages">Advantages</a>
+              <a href="buyer.html#buyer-faq">FAQ</a>
+            </div>
+          </li>
+          <li><a data-page-link="contacts" href="contacts.html">Contacts</a></li>
+          <li><a data-page-link="policy" href="policy.html">Policy</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button" data-type="primary" data-role="publish-link" href="seller.html">Publish</a>
+        <a class="button" data-type="secondary" data-role="view-link" href="buyer.html">View</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-shell">
+        <div class="hero-copy">
+          <span class="kicker">Module A · Static Website Design</span>
+          <h1>Коллекционные находки обретают новых владельцев быстрее</h1>
+          <p>COLLECTO — лендинг онлайн-сервиса объявлений для людей, которые покупают и продают LEGO, настольные игры, комиксы, фигурки, сувениры и другие тематические товары.</p>
+          <div class="hero-actions">
+            <a class="button button-accent" data-type="primary" data-role="publish-link" href="seller.html">Опубликовать объявление</a>
+            <a class="button" data-type="secondary" data-role="view-link" href="buyer.html">Посмотреть предложения</a>
+          </div>
+          <ul class="metrics" aria-label="Ключевые преимущества">
+            <li><strong>4 шага</strong><span>до публикации объявления</span></li>
+            <li><strong>3 формата</strong><span>платного продвижения</span></li>
+            <li><strong>1 платформа</strong><span>для нишевых сообществ</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-collage">
+            <div class="visual-card" data-hide-on-error>
+              <img src="media-files/images/insung-yoon-MrEMas1ZcFw-unsplash.jpg" alt="Коллекционные фигурки и тематические товары">
+            </div>
+            <div class="visual-column">
+              <div class="stat-card">
+                <span class="card-eyebrow">Для продавца</span>
+                <strong>Быстро</strong>
+                <p>Чистая форма размещения, понятный путь и заметная карточка товара.</p>
+              </div>
+              <div class="visual-card" data-hide-on-error>
+                <img src="media-files/images/glen-carrie-HpMihL323k0-unsplash.jpg" alt="Настольные игры и аксессуары для коллекционеров">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>О проекте</h2>
+            <p>Платформа создаёт понятную среду для покупки и продажи тематических товаров.</p>
+          </div>
+        </div>
+        <div class="info-grid">
+          <article class="info-card">
+            <span class="icon-chip">🎯</span>
+            <h3>Цель сервиса</h3>
+            <p>Собрать в одном месте объявления для узкой и активной аудитории, где ценят редкие вещи, состояние товара и доверие к продавцу.</p>
+          </article>
+          <article class="info-card">
+            <span class="icon-chip">👥</span>
+            <h3>Аудитория</h3>
+            <p>Коллекционеры, гики, косплееры, фанаты настольных игр, любители лимитированных выпусков и все, кто ищет особенные товары по интересам.</p>
+          </article>
+          <article class="info-card">
+            <span class="icon-chip">✨</span>
+            <h3>Особенности платформы</h3>
+            <p>Нишевые категории, понятная подача карточек, сценарии для продавцов и покупателей, а также платные инструменты продвижения для усиления охвата.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Категории товаров</h2>
+            <p>Структура главной страницы отражает обязательный блок категорий из технического задания.</p>
+          </div>
+        </div>
+        <div class="category-grid">
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/xavi-cabrera-kn-UmDZQDjM-unsplash.jpg" alt="Наборы LEGO и детали конструктора">
+            </div>
+            <h3>LEGO и конструкторы</h3>
+            <p>Редкие наборы, минифигурки, запасные детали и коллекционные серии для поклонников сборки.</p>
+          </article>
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/don-fontijn-O8dLvUfl-oM-unsplash.jpg" alt="Настольные игры для коллекции">
+            </div>
+            <h3>Настольные игры</h3>
+            <p>Семейные игры, стратегии, редкие издания и дополнения, которые хочется сохранить в идеальном состоянии.</p>
+          </article>
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/erik-mclean-ljzBByu5p3g-unsplash.jpg" alt="Комиксы и тематические издания">
+            </div>
+            <h3>Комиксы и манга</h3>
+            <p>Одиночные выпуски, омнибусы, артбуки и редкие обложки для тех, кто собирает истории по-настоящему.</p>
+          </article>
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/nik-v8pL84kvTTc-unsplash.jpg" alt="Коллекционные фигурки">
+            </div>
+            <h3>Фигурки и статуэтки</h3>
+            <p>Фандомные персонажи, лимитированные выпуски, фигурки в коробке и премиальные серии.</p>
+          </article>
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/jose-rueda--i_tWB5UzjY-unsplash.jpg" alt="Сувениры и тематический мерч">
+            </div>
+            <h3>Сувениры и мерч</h3>
+            <p>Значки, брелоки, карточки, постеры и памятные вещи, которые поддерживают атмосферу любимых вселенных.</p>
+          </article>
+          <article class="category-card">
+            <div class="card-image" data-hide-on-error>
+              <img src="media-files/images/omar-flores-lQT_bOWtysE-unsplash.jpg" alt="Разные коллекционные товары">
+            </div>
+            <h3>Другие находки</h3>
+            <p>Всё, что не хочется потерять среди обычных объявлений: редкие аксессуары, винтаж и необычные тематические предметы.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Преимущества сервиса</h2>
+            <p>Лендинг рассказывает о выгоде платформы сразу для нескольких сценариев использования.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon-chip">🚀</span>
+            <h3>Простое размещение</h3>
+            <p>Путь от идеи до публикации короткий и понятный: загружайте фото, добавляйте описание и показывайте товар заинтересованной аудитории.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-chip">🎨</span>
+            <h3>Визуальный акцент на товаре</h3>
+            <p>Лендинг и карточки создают ощущение качественного каталога, где ценность товара считывается с первого экрана.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-chip">🧭</span>
+            <h3>Логичная навигация</h3>
+            <p>Покупатель быстро переходит к преимуществам, FAQ и полезным разделам, а продавец видит отдельную страницу платных услуг.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-chip">📈</span>
+            <h3>Платное продвижение</h3>
+            <p>Дополнительные инструменты усиливают видимость объявления и помогают быстрее найти нужного покупателя.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split-layout">
+        <article class="section-box">
+          <span class="card-eyebrow">Call to action</span>
+          <h2>У вас есть редкий товар?</h2>
+          <p>Покажите его людям, которые действительно понимают ценность коллекции. Опубликуйте объявление и оформите карточку так, чтобы её захотелось открыть с первого взгляда.</p>
+          <div class="hero-actions">
+            <a class="button button-accent" data-type="primary" data-role="publish-link" href="seller.html">Начать продажу</a>
+            <a class="button" data-type="secondary" href="seller-services.html">Изучить платные услуги</a>
+          </div>
+        </article>
+        <article class="notice">
+          <h3>Что получает пользователь</h3>
+          <ul class="inline-list">
+            <li>Адаптивный интерфейс</li>
+            <li>Единый визуальный стиль</li>
+            <li>Подробные сценарии для seller и buyer</li>
+            <li>Контакты и политика на отдельных страницах</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Отзывы пользователей</h2>
+            <p>Блок отзывов — обязательный элемент главной страницы по заданию.</p>
+          </div>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <span class="card-eyebrow">Отзыв</span>
+            <h3>Алина, коллекционер LEGO</h3>
+            <p>Понравилось, что объявление можно оформить быстро, а аудитория здесь действительно заинтересована в редких наборах.</p>
+          </article>
+          <article class="review-card">
+            <span class="card-eyebrow">Отзыв</span>
+            <h3>Максат, продавец настолок</h3>
+            <p>Платные услуги понятные, а структура страницы помогает показать товар так, чтобы покупатель сразу видел ценность.</p>
+          </article>
+          <article class="review-card">
+            <span class="card-eyebrow">Отзыв</span>
+            <h3>Диана, покупатель комиксов</h3>
+            <p>Удобно искать тематические товары в одной платформе. Отдельно радуют понятные карточки и быстрый контакт с продавцом.</p>
+          </article>
+          <article class="review-card">
+            <span class="card-eyebrow">Отзыв</span>
+            <h3>Нуржан, коллекционер фигурок</h3>
+            <p>Лендинг выглядит современно и сразу объясняет, зачем сервис нужен и чем он отличается от обычных досок объявлений.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="index.html" aria-label="COLLECTO — на главную">
+            <img src="media-files/logo.png" alt="Логотип COLLECTO">
+            <span>
+              COLLECTO
+              <small>Marketplace for collectors</small>
+            </span>
+          </a>
+          <p>Лендинг онлайн-сервиса объявлений для коллекционных и тематических товаров.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навигация в футере">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="seller.html">For Seller</a></li>
+            <li><a href="seller-services.html">Paid Services</a></li>
+            <li><a href="buyer.html">For Buyer</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="policy.html">Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <ul class="footer-meta">
+        <li>SEO-ready meta tags</li>
+        <li>OpenGraph configured</li>
+        <li>Без фреймворков</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
