@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts — COLLECTORA</title>
+  <meta name="description" content="Контакты сервиса: форма, email, соцсети и карта.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contacts — COLLECTORA">
+  <meta property="og:description" content="Контакты сервиса: форма, email, соцсети и карта.">
+  <meta property="og:image" content="media-files/logo.png">
+  <meta property="og:url" content="contacts.html">
+  <meta name="theme-color" content="#4466ff">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body data-page="contacts">
+
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="COLLECTORA — на главную">
+        <div class="brand-logo">
+          <img src="media-files/logo.png" alt="Логотип COLLECTORA" data-image-fallback="logo-fallback">
+          <div class="brand-fallback" id="logo-fallback">media-files/logo.png</div>
+        </div>
+        <div class="brand-text">
+          <strong>COLLECTORA</strong>
+          <span>Лендинг сервиса объявлений для коллекционеров</span>
+        </div>
+      </a>
+
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <label class="nav-toggle-label" for="nav-toggle" aria-label="Открыть меню"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html" data-page-link="home">Home</a></li>
+          <li class="has-submenu">
+            <a href="seller.html" data-page-link="seller">For Seller</a>
+            <div class="submenu">
+              <a href="seller.html#seller-advantages">Advantages</a>
+              <a href="seller-services.html">Paid Services</a>
+              <a href="seller.html#seller-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="buyer.html" data-page-link="buyer">For Buyer</a>
+            <div class="submenu">
+              <a href="buyer.html#buyer-advantages">Advantages</a>
+              <a href="buyer.html#buyer-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="contacts.html" data-page-link="contacts">Contacts</a>
+            <div class="submenu">
+              <a href="contacts.html#contact-form">Feedback Form</a>
+              <a href="contacts.html#social-links">Social Links</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="policy.html" data-page-link="policy">Policy</a>
+            <div class="submenu">
+              <a href="policy.html#policy-main">Privacy Policy</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button" data-type="primary" data-role="publish-link" href="seller.html">Publish</a>
+        <a class="button" data-type="secondary" data-role="view-link" href="buyer.html">View</a>
+      </div>
+    </div>
+  </header>
+
+
+<main id="main-content">
+  <section class="hero">
+    <div class="container hero-box">
+      <div>
+        <span class="kicker">Contacts</span>
+        <h1>Свяжитесь с командой сервиса</h1>
+        <p>На странице контактов есть форма обратной связи, контактная информация, ссылки на социальные сети и карта с корректным путём к изображению.</p>
+      </div>
+      <aside class="hero-panel">
+        <ul>
+          <li><strong>Email</strong><span>support@example.com</span></li>
+          <li><strong>Часы работы</strong><span>Пн–Пт, с 9:00 до 18:00</span></li>
+          <li><strong>Социальные сети</strong><span>Instagram, Facebook, Telegram, X и LinkedIn</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <article class="contact-card" id="contact-form">
+        <div class="section-title">
+          <h2>Форма обратной связи</h2>
+          <p>Используются правильные типы полей: text, email и textarea.</p>
+        </div>
+        <form data-contact-form>
+          <label>Имя
+            <input type="text" name="name" placeholder="Введите имя" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" placeholder="Введите email" required>
+          </label>
+          <label>Сообщение
+            <textarea name="message" placeholder="Введите сообщение" required></textarea>
+          </label>
+          <button class="button" data-type="primary" type="submit">Отправить</button>
+          <p class="form-note">Сейчас форма демонстрационная, но разметка уже готова для подключения backend.</p>
+          <p class="form-success" data-form-message></p>
+        </form>
+      </article>
+
+      <div>
+        <article class="contact-card">
+          <div class="section-title">
+            <h2>Контактная информация</h2>
+          </div>
+          <ul class="contact-list">
+            <li><strong>Электронная почта:</strong> <a class="link-animated" href="mailto:support@example.com">support@example.com</a></li>
+            <li><strong>Часы работы:</strong> Пн–Пт, с 9:00 до 18:00 (по местному времени)</li>
+          </ul>
+        </article>
+
+        <article class="contact-card" id="social-links" style="margin-top: 20px;">
+          <div class="section-title">
+            <h2>Социальные сети</h2>
+          </div>
+          <ul class="contact-list">
+            <li><a class="link-animated" href="https://instagram.com/example" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a class="link-animated" href="https://facebook.com/example" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a class="link-animated" href="https://t.me/example" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+            <li><a class="link-animated" href="https://x.com/example" target="_blank" rel="noopener noreferrer">X (бывший Twitter)</a></li>
+            <li><a class="link-animated" href="https://linkedin.com/company/example" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container map-card">
+      <div class="section-title">
+        <h2>Карта</h2>
+        <p>Путь к карте оставлен корректным: <code>media-files/map.png</code>.</p>
+      </div>
+      <div class="map-frame">
+        <img src="media-files/map.png" alt="Карта расположения офиса сервиса" data-image-fallback="map-fallback">
+        <div class="media-fallback" id="map-fallback">Здесь будет отображаться карта из файла <strong>media-files/map.png</strong>, если папка media-files будет добавлена рядом с проектом.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+  <footer class="site-footer">
+    <div class="container footer-box">
+      <div>
+        <div class="brand-text">
+          <strong>COLLECTORA</strong>
+          <span>Упрощённая учебная версия проекта по Module A</span>
+        </div>
+        <p class="footer-note">Страницы связаны общей навигацией, адаптивной вёрсткой, микро-анимациями и единым стилем.</p>
+      </div>
+      <nav aria-label="Навигация в футере">
+        <ul class="footer-links">
+          <li><a class="link-animated" href="index.html">Home</a></li>
+          <li><a class="link-animated" href="seller.html">For Seller</a></li>
+          <li><a class="link-animated" href="seller-services.html">Paid Services</a></li>
+          <li><a class="link-animated" href="buyer.html">For Buyer</a></li>
+          <li><a class="link-animated" href="contacts.html">Contacts</a></li>
+          <li><a class="link-animated" href="policy.html">Policy</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-note">Кнопки Publish и View можно быстро перенастроить в файле <strong>js/config.js</strong>.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

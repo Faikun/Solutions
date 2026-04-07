@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid Services — COLLECTORA</title>
+  <meta name="description" content="Платные услуги для продавцов с расчётом стоимости через range.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paid Services — COLLECTORA">
+  <meta property="og:description" content="Платные услуги для продавцов с расчётом стоимости через range.">
+  <meta property="og:image" content="media-files/logo.png">
+  <meta property="og:url" content="seller-services.html">
+  <meta name="theme-color" content="#4466ff">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body data-page="seller">
+
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="COLLECTORA — на главную">
+        <div class="brand-logo">
+          <img src="media-files/logo.png" alt="Логотип COLLECTORA" data-image-fallback="logo-fallback">
+          <div class="brand-fallback" id="logo-fallback">media-files/logo.png</div>
+        </div>
+        <div class="brand-text">
+          <strong>COLLECTORA</strong>
+          <span>Лендинг сервиса объявлений для коллекционеров</span>
+        </div>
+      </a>
+
+      <input class="nav-toggle" id="nav-toggle" type="checkbox">
+      <label class="nav-toggle-label" for="nav-toggle" aria-label="Открыть меню"><span></span></label>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="index.html" data-page-link="home">Home</a></li>
+          <li class="has-submenu">
+            <a href="seller.html" data-page-link="seller">For Seller</a>
+            <div class="submenu">
+              <a href="seller.html#seller-advantages">Advantages</a>
+              <a href="seller-services.html">Paid Services</a>
+              <a href="seller.html#seller-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="buyer.html" data-page-link="buyer">For Buyer</a>
+            <div class="submenu">
+              <a href="buyer.html#buyer-advantages">Advantages</a>
+              <a href="buyer.html#buyer-faq">FAQ</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="contacts.html" data-page-link="contacts">Contacts</a>
+            <div class="submenu">
+              <a href="contacts.html#contact-form">Feedback Form</a>
+              <a href="contacts.html#social-links">Social Links</a>
+            </div>
+          </li>
+          <li class="has-submenu">
+            <a href="policy.html" data-page-link="policy">Policy</a>
+            <div class="submenu">
+              <a href="policy.html#policy-main">Privacy Policy</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button" data-type="primary" data-role="publish-link" href="seller.html">Publish</a>
+        <a class="button" data-type="secondary" data-role="view-link" href="buyer.html">View</a>
+      </div>
+    </div>
+  </header>
+
+
+<main id="main-content">
+  <section class="hero">
+    <div class="container hero-box">
+      <div>
+        <span class="kicker">For Seller / Paid Services</span>
+        <h1>Платные услуги для продвижения объявления</h1>
+        <p>На этой странице есть прайс-лист, преимущества продвижения и FAQ. Для каждой услуги можно выбрать срок через ползунок range.</p>
+      </div>
+      <aside class="hero-panel">
+        <ul>
+          <li><strong>Выбор срока</strong><span>Вместо сложных расчётов используется простой range, который переключает готовые варианты: 1, 2, 10 и 30 дней.</span></li>
+          <li><strong>Простая логика</strong><span>Цены берутся из config.js, поэтому их легко изменить в одном месте.</span></li>
+          <li><strong>Понятная вёрстка</strong><span>Каждая услуга оформлена одинаково, чтобы код было легче читать и повторять.</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Прайс-лист</h2>
+        <p>Цены и сроки взяты из задания. Ползунок выбирает один из доступных сроков и сразу показывает итоговую стоимость.</p>
+      </div>
+      <div class="grid-2">
+        <article class="price-card" data-service="highlight">
+          <h3>Выделение объявления цветом</h3>
+          <p>Ваше объявление будет выделено цветом в списке, что делает его более заметным.</p>
+          <div class="range-row">
+            <label for="highlight-range">Количество дней</label>
+            <input id="highlight-range" type="range" min="0" max="3" step="1" value="0">
+            <div class="range-meta"><span class="price-days" data-days-output></span><span class="price-total" data-price-output></span></div>
+          </div>
+        </article>
+        <article class="price-card" data-service="raise">
+          <h3>Поднятие объявления в списке</h3>
+          <p>Автоматическое поднятие в начало списка один раз в сутки.</p>
+          <div class="range-row">
+            <label for="raise-range">Количество дней</label>
+            <input id="raise-range" type="range" min="0" max="3" step="1" value="0">
+            <div class="range-meta"><span class="price-days" data-days-output></span><span class="price-total" data-price-output></span></div>
+          </div>
+        </article>
+        <article class="price-card" data-service="pin">
+          <h3>Закрепление в верхней части категории</h3>
+          <p>Объявление отображается первым в списке своей категории.</p>
+          <div class="range-row">
+            <label for="pin-range">Количество дней</label>
+            <input id="pin-range" type="range" min="0" max="3" step="1" value="0">
+            <div class="range-meta"><span class="price-days" data-days-output></span><span class="price-total" data-price-output></span></div>
+          </div>
+        </article>
+        <article class="price-card" data-service="home">
+          <h3>Размещение на главной странице</h3>
+          <p>Объявление отображается в специальном блоке на главной.</p>
+          <div class="range-row">
+            <label for="home-range">Количество дней</label>
+            <input id="home-range" type="range" min="0" max="3" step="1" value="0">
+            <div class="range-meta"><span class="price-days" data-days-output></span><span class="price-total" data-price-output></span></div>
+          </div>
+        </article>
+        <article class="price-card" data-service="premium">
+          <h3>Пакет «Премиум»</h3>
+          <p>Включает все вышеперечисленные функции. Максимальная эффективность по выгодной цене.</p>
+          <div class="range-row">
+            <label for="premium-range">Количество дней</label>
+            <input id="premium-range" type="range" min="0" max="3" step="1" value="0">
+            <div class="range-meta"><span class="price-days" data-days-output></span><span class="price-total" data-price-output></span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Преимущества платных услуг</h2>
+        <p>Эти блоки помогают объяснить, зачем продавцу использовать продвижение.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><h3>Больше просмотров</h3><p>Ваши объявления получают приоритетное размещение, что увеличивает их видимость для потенциальных покупателей.</p></article>
+        <article class="card"><h3>Выделение среди конкурентов</h3><p>Цветовая подсветка и закрепление позволяют привлечь внимание даже в насыщенных категориях.</p></article>
+        <article class="card"><h3>Повышение доверия</h3><p>Часто просматриваемые и размещённые на главной странице объявления воспринимаются как более надёжные.</p></article>
+        <article class="card"><h3>Гибкость и контроль</h3><p>Вы сами выбираете нужный срок и формат продвижения — от одного дня до месяца.</p></article>
+        <article class="card"><h3>Комплексное продвижение</h3><p>Комбинация всех услуг в пакете «Премиум» даёт максимальный эффект и экономит до 30% бюджета.</p></article>
+        <article class="card"><h3>Рост продаж</h3><p>Продавцы, использующие платные функции, в среднем получают в 3 раза больше откликов и завершённых сделок.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>FAQ по прайс-листу</h2>
+      </div>
+      <div class="faq">
+        <details><summary>А зачем мне нужен прайс-лист продавца?</summary><p>Он помогает сразу показать покупателям, что именно вы предлагаете и по каким ценам. Так люди быстрее понимают, подходит ли им ваш товар или услуга.</p></details>
+        <details><summary>А как им пользоваться?</summary><p>Вы создаёте список своих позиций с ценами и краткими описаниями. Покупатели открывают его, сравнивают варианты и выбирают то, что им нужно. Просто и удобно.</p></details>
+        <details><summary>А если цены меняются?</summary><p>Вы легко можете обновлять прайс-лист в любой момент. Так покупатели всегда видят актуальную стоимость и не тратят время на уточнения.</p></details>
+        <details><summary>А что делать, если мои товары разные?</summary><p>Разбейте их на категории, укажите ключевые характеристики и добавьте примеры. Структурированный прайс-лист помогает покупателям быстрее найти нужное.</p></details>
+        <details><summary>А поможет ли это продавать быстрее?</summary><p>Да, потому что людям не нужно задавать лишних вопросов. Прозрачные цены и понятные описания повышают доверие и экономят время обеим сторонам.</p></details>
+        <details><summary>А безопасно ли указывать цены публично?</summary><p>Это стандартная практика. Главное — честно указывать реальную стоимость и по возможности добавлять пометки о нюансах: скидках, условиях доставки или предоплате.</p></details>
+        <details><summary>А если покупатель попросит скидку?</summary><p>Решать вам. Можно заранее указать, где цена фиксирована, а где возможен торг. Это избавит от недоразумений и сделает общение проще.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+  <footer class="site-footer">
+    <div class="container footer-box">
+      <div>
+        <div class="brand-text">
+          <strong>COLLECTORA</strong>
+          <span>Упрощённая учебная версия проекта по Module A</span>
+        </div>
+        <p class="footer-note">Страницы связаны общей навигацией, адаптивной вёрсткой, микро-анимациями и единым стилем.</p>
+      </div>
+      <nav aria-label="Навигация в футере">
+        <ul class="footer-links">
+          <li><a class="link-animated" href="index.html">Home</a></li>
+          <li><a class="link-animated" href="seller.html">For Seller</a></li>
+          <li><a class="link-animated" href="seller-services.html">Paid Services</a></li>
+          <li><a class="link-animated" href="buyer.html">For Buyer</a></li>
+          <li><a class="link-animated" href="contacts.html">Contacts</a></li>
+          <li><a class="link-animated" href="policy.html">Policy</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-note">Кнопки Publish и View можно быстро перенастроить в файле <strong>js/config.js</strong>.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
