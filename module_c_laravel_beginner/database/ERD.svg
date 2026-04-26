@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <style>
+    text{font-family:Arial,sans-serif;font-size:18px;fill:#111} .title{font-size:28px;font-weight:bold}.head{fill:#e8f0ff;stroke:#000;stroke-width:2}.cell{fill:#fff;stroke:#000}.table-title{font-size:24px;font-weight:bold}.line{stroke:#000;stroke-width:3;marker-end:url(#arrow)}
+  </style>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#000" /></marker></defs>
+  <text x="60" y="45" class="title">WorldSkills Module C ERD — Geek Bazaar REST API</text>
+  <g transform="translate(60,80)"><rect class="head" width="320" height="40"/><text x="10" y="27" class="table-title">users</text><rect y="40" class="cell" width="320" height="260"/><text x="12" y="75">id PK</text><text x="12" y="105">name</text><text x="12" y="135">phone UNIQUE</text><text x="12" y="165">email UNIQUE</text><text x="12" y="195">password</text><text x="12" y="225">role: user/moderator</text><text x="12" y="255">api_token</text><text x="12" y="285">timestamps</text></g>
+  <g transform="translate(540,80)"><rect class="head" width="320" height="40"/><text x="10" y="27" class="table-title">categories</text><rect y="40" class="cell" width="320" height="120"/><text x="12" y="75">id PK</text><text x="12" y="105">name UNIQUE</text><text x="12" y="135">timestamps</text></g>
+  <g transform="translate(540,360)"><rect class="head" width="320" height="40"/><text x="10" y="27" class="table-title">adverts</text><rect y="40" class="cell" width="320" height="320"/><text x="12" y="75">id PK</text><text x="12" y="105">status</text><text x="12" y="135">title</text><text x="12" y="165">text</text><text x="12" y="195">price</text><text x="12" y="225">category_id FK</text><text x="12" y="255">user_id FK</text><text x="12" y="285">photos JSON</text><text x="12" y="315">timestamps</text></g>
+  <g transform="translate(60,560)"><rect class="head" width="320" height="40"/><text x="10" y="27" class="table-title">views</text><rect y="40" class="cell" width="320" height="170"/><text x="12" y="75">id PK</text><text x="12" y="105">advert_id FK</text><text x="12" y="135">user_id FK</text><text x="12" y="165">timestamps</text><text x="12" y="195">UNIQUE(advert_id,user_id)</text></g>
+  <g transform="translate(1020,520)"><rect class="head" width="320" height="40"/><text x="10" y="27" class="table-title">advert_services</text><rect y="40" class="cell" width="320" height="200"/><text x="12" y="75">id PK</text><text x="12" y="105">advert_id FK</text><text x="12" y="135">type: vip/top</text><text x="12" y="165">activated_at</text><text x="12" y="195">expires_at</text><text x="12" y="225">timestamps</text></g>
+  <line x1="380" y1="220" x2="540" y2="520" class="line"/><text x="390" y="350">users 1 → many adverts</text>
+  <line x1="700" y1="240" x2="700" y2="360" class="line"/><text x="720" y="305">categories 1 → many adverts</text>
+  <line x1="540" y1="610" x2="380" y2="650" class="line"/><text x="385" y="610">adverts 1 → many views</text>
+  <line x1="220" y1="380" x2="220" y2="560" class="line"/><text x="230" y="470">users 1 → many views</text>
+  <line x1="860" y1="620" x2="1020" y2="620" class="line"/><text x="875" y="595">adverts 1 → many services</text>
+</svg>

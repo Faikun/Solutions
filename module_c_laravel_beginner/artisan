@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+// Точка старта для CLI-команд Laravel.
+define('LARAVEL_START', microtime(true));
+
+// Подключаем автозагрузчик Composer.
+require __DIR__.'/vendor/autoload.php';
+
+// Поднимаем приложение Laravel.
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+// Выполняем консольную команду, которую ввёл пользователь.
+$status = $app->handleCommand(new ArgvInput);
+
+// Завершаем процесс с соответствующим кодом возврата.
+exit($status);

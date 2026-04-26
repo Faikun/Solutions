@@ -1,0 +1,672 @@
+# Учебный OpenAPI-файл для Module C
+# Здесь описаны основные endpoints REST API.
+# При необходимости можно дополнять схемы и ответы под требования автотестов.
+openapi: 3.0.3
+info:
+  title: Adverts API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      operationId: register
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+  /auth/login:
+    post:
+      summary: Log in user
+      operationId: login
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+  /auth/logout:
+    post:
+      summary: Log out user
+      operationId: logout
+      security:
+        - bearerAuth: []
+      tags:
+        - Auth
+      responses:
+        '204':
+          description: Logged out successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+  /user:
+    get:
+      summary: Get current user profile
+      operationId: getCurrentUser
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      responses:
+        '200':
+          description: Current user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+    patch:
+      summary: Update current user profile
+      operationId: updateUser
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: Profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+  /user/adverts:
+    get:
+      summary: Get list of user's adverts
+      operationId: getUserAdverts
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            default: published
+            enum: 
+              - draft
+              - moderation
+              - declined
+              - published
+              - archived
+          description: Status
+      responses:
+        '200':
+          description: List of user's adverts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advert'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+  /categories:
+    get:
+      summary: Get list of categories
+      operationId: getCategories
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+  /adverts:
+    get:
+      summary: Get list of adverts
+      operationId: getAdverts
+      tags:
+        - Adverts
+      parameters:
+        - in: query
+          name: category_id
+          schema:
+            type: integer
+          description: Filter ads by category ID
+        - in: query
+          name: price_from
+          schema:
+            type: integer
+          description: Filter ads by price
+        - in: query
+          name: price_to
+          schema:
+            type: integer
+          description: Filter ads by price
+        - in: query
+          name: query
+          schema:
+            type: string
+          description: Search query to filter by title or description
+        - in: query
+          name: sort_by
+          schema:
+            type: string
+            enum: 
+              - date
+              - price
+          description: Field to sort the results by
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: 
+              - asc
+              - desc
+          description: Sort direction (ascending or descending)
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: Page number for pagination
+        - in: query
+          name: per_page
+          schema:
+            type: integer
+            default: 10
+            enum: 
+              - 10
+              - 20
+              - 30
+          description: Number of items per page
+      responses:
+        '200':
+          description: List of adverts, only published
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advert'
+    post:
+      summary: Create advert
+      operationId: createAdvert
+      tags:
+        - Adverts
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdvertCreateRequest'
+      responses:
+        '200':
+          description: Created advert (in draft status)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advert'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+  /adverts/{id}:
+    get:
+      summary: Get advert
+      operationId: getAdvert
+      tags:
+        - Adverts
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Advert ID
+      responses:
+        '200':
+          description: Advert
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advert'
+        '404':
+          description: The requested advert doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundErrorResponse'
+    patch:
+      summary: Update advert
+      operationId: updateAdvert
+      tags:
+        - Adverts
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdvertUpdateRequest'
+      responses:
+        '200':
+          description: Updated advert (automatically moved to moderation status if edited by a non-moderator user)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advert'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+        '403':
+          description: Only advert's author or moderator can execute this request. Simple user caen edit only in draft status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorResponse'
+        '404':
+          description: The requested advert doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+    delete:
+      summary: Delete advert (only draft or archived)
+      operationId: deleteAdvert
+      tags:
+        - Adverts
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Deleted advert successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+        '403':
+          description: Only advert's author can execute this request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorResponse'
+        '404':
+          description: The requested advert doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundErrorResponse'
+  /adverts/{id}/update-status:
+    post:
+      summary: Update advert status
+      operationId: updateAdvertStatus
+      description: Moderator can move to declined or published from moderation, archived from published. Author can move to moderation from draft, archived from published.
+      tags:
+        - Adverts
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdvertUpdateStatusRequest'
+      responses:
+        '200':
+          description: Updated advert
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advert'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorResponse'
+        '403':
+          description: Only advert's author or moderator can execute this request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorResponse'
+        '404':
+          description: The requested advert doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    RegisterRequest:
+      type: object
+      required:
+        - phone
+        - email
+        - password
+      properties:
+        phone:
+          type: string
+          pattern: '^\+\d{10,15}$'
+          example: "+77001234567"
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        password:
+          type: string
+          format: password
+          minLength: 8
+          maxLength: 50
+          example: "StrongP@ssw0rd"
+    LoginRequest:
+      type: object
+      required:
+        - login
+        - password
+      properties:
+        login:
+          type: string
+          description: Email or phone number
+          example: "user@example.com"
+        password:
+          type: string
+          format: password
+          example: "StrongP@ssw0rd"
+    AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: "eyJhbGciOiJIUzI1NiIsInR..."
+    ValidationErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "The request body is not valid"
+    UnauthorizedErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid credentials"
+    ForbiddenErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "You do not have permission to perform this request"
+    NotFoundErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "The requested resource was not found"
+    UserUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          pattern: '^\+\d{10,15}$'
+          example: "+77001234567"
+        email:
+          type: string
+          format: email
+      additionalProperties: false
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 100
+          nullable: true
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+          nullable: true
+        role:
+          type: string
+          enum:
+            - user
+            - moderator
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Advert:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        status:
+          type: string
+          enum:
+            - draft
+            - moderation
+            - declined
+            - published
+            - archived
+          default: draft
+          example: published
+        title:
+          type: string
+          maxLength: 200
+          example: "Original LEGO Set – Complete, Great Condition!"
+        text:
+          type: string
+          maxLength: 1000
+          example:  "Selling an original LEGO set in great condition! All pieces are complete, includes manual. Perfect for collectors or as a gift. Box not included. Suitable for kids 7+."
+        price:
+          type: integer
+          example: 1000
+        views:
+          type: integer
+          example: 100
+        category_id:
+          $ref: '#/components/schemas/Category'
+        user_id:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: "Whoami"
+            phone:
+              type: string
+              example: ""
+        photos:
+          type: array
+          items:
+            type: string
+            format: uri
+        created_at:
+          type: string
+          example: "20.07.2025"
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          maxLength: 100
+          example: "LEGO"
+    AdvertCreateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 200
+          example: "Original LEGO Set – Complete, Great Condition!"
+        text:
+          type: string
+          maxLength: 1000
+          example:  "Selling an original LEGO set in great condition! All pieces are complete, includes manual. Perfect for collectors or as a gift. Box not included. Suitable for kids 7+."
+        price:
+          type: integer
+          example: 1000
+        category_id:
+          type: integer
+          example: 1
+          description: Existing category id
+        photos[]:
+          type: array
+          description: Array of photos
+          minItems: 1
+      required:
+        - title
+        - text
+        - price
+        - category_id
+        - photos
+    AdvertUpdateRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 200
+          example: "Original LEGO Set – Complete, Great Condition!"
+        text:
+          type: string
+          maxLength: 1000
+          example:  "Selling an original LEGO set in great condition! All pieces are complete, includes manual. Perfect for collectors or as a gift. Box not included. Suitable for kids 7+."
+        price:
+          type: integer
+          example: 1000
+        category_id:
+          type: integer
+          example: 1
+          description: Existing category id
+    AdvertUpdateStatusRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - draft
+            - moderation
+            - declined
+            - published
+            - archived
+          example: published

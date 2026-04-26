@@ -1,0 +1,17 @@
+digraph ERD {
+  graph [rankdir=LR, bgcolor=white, label="WorldSkills Module C ERD — Geek Bazaar REST API", labelloc=t, fontsize=22];
+  node [shape=record, fontname=Arial, fontsize=12];
+  edge [fontname=Arial, fontsize=11];
+
+  users [label="{users|id PK\lname\lphone UNIQUE\lemail UNIQUE\lpassword\lrole\lapi_token\ltimestamps\l}"];
+  categories [label="{categories|id PK\lname UNIQUE\ltimestamps\l}"];
+  adverts [label="{adverts|id PK\lstatus\ltitle\ltext\lprice\lcategory_id FK\luser_id FK\lphotos JSON\ltimestamps\l}"];
+  views [label="{views|id PK\ladvert_id FK\luser_id FK\ltimestamps\lUNIQUE(advert_id,user_id)\l}"];
+  services [label="{advert_services|id PK\ladvert_id FK\ltype: vip/top\lactivated_at\lexpires_at\ltimestamps\l}"];
+
+  users -> adverts [label="1 to many"];
+  categories -> adverts [label="1 to many"];
+  adverts -> views [label="1 to many"];
+  users -> views [label="1 to many"];
+  adverts -> services [label="1 to many"];
+}
