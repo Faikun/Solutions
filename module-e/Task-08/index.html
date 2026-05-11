@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 08</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <h1>Box Shadow Generator</h1>
+        <label
+          >X offset
+          <input id="x" type="range" min="-50" max="50" value="10" /></label
+        ><label
+          >Y offset
+          <input id="y" type="range" min="-50" max="50" value="12" /></label
+        ><label
+          >Spread
+          <input id="spread" type="range" min="-50" max="50" value="0" /></label
+        ><label
+          >Blur
+          <input id="blur" type="range" min="0" max="100" value="28" /></label
+        ><label>Color <input id="color" type="color" value="#725ac1" /></label>
+        <div class="output-row">
+          <code id="shadow-value">10px 12px 28px 0px #725ac1</code
+          ><button id="copy-btn">Copy</button>
+        </div>
+      </section>
+      <section class="preview-section">
+        <div id="preview-box" class="preview-box"></div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

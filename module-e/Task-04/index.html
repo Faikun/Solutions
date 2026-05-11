@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 04</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>To-Do List</h1>
+      <form id="todo-form" class="card">
+        <input id="title" type="text" placeholder="Title" required /><textarea
+          id="description"
+          placeholder="Description"
+          required
+        ></textarea
+        ><select id="category" required>
+          <option value="">Select category</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Urgent">Urgent</option></select
+        ><button type="submit">Add task</button>
+      </form>
+      <div class="filters">
+        <button data-filter="All" class="filter active">All</button
+        ><button data-filter="Work" class="filter">Work</button
+        ><button data-filter="Personal" class="filter">Personal</button
+        ><button data-filter="Urgent" class="filter">Urgent</button>
+      </div>
+      <section id="todo-list" class="list"></section>
+    </main>
+    <script src="js/todo.js"></script>
+  </body>
+</html>

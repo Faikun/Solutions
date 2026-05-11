@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geek Bazaar SPA — простая версия</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a href="#/" class="logo">Geek Bazaar</a>
+
+      <nav class="main-nav">
+        <a href="#/">Главная</a>
+        <a href="#/my-adverts">Мои объявления</a>
+        <a href="#/create">Создать</a>
+        <a href="#/profile">Профиль</a>
+        <a href="#/login" data-guest-only>Вход</a>
+        <a href="#/register" data-guest-only>Регистрация</a>
+        <button type="button" id="logoutButton" class="link-button" data-auth-only>Выход</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-wrap">
+    <div id="appMessage" class="message" hidden></div>
+    <div id="appLoader" class="loader" hidden>Загрузка...</div>
+
+    <!-- Главная страница -->
+    <section id="page-home" class="page active">
+      <h1>Опубликованные объявления</h1>
+      <p class="page-text">Главная страница доступна без авторизации. Здесь можно искать и фильтровать опубликованные объявления.</p>
+
+      <form id="homeFilterForm" class="card form-grid">
+        <div>
+          <label for="homeSearch">Поиск</label>
+          <input id="homeSearch" name="search" type="text" placeholder="Название, текст, категория, автор">
+        </div>
+
+        <div>
+          <label for="homeCategory">Категория</label>
+          <select id="homeCategory" name="category_id">
+            <option value="">Все категории</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="homePriceMin">Цена от</label>
+          <input id="homePriceMin" name="price_min" type="number" min="0" step="0.01" placeholder="0">
+        </div>
+
+        <div>
+          <label for="homePriceMax">Цена до</label>
+          <input id="homePriceMax" name="price_max" type="number" min="0" step="0.01" placeholder="10000">
+        </div>
+
+        <div>
+          <label for="homeSort">Сортировка</label>
+          <select id="homeSort" name="sort">
+            <option value="date_desc">По дате ↓</option>
+            <option value="date_asc">По дате ↑</option>
+            <option value="price_desc">По цене ↓</option>
+            <option value="price_asc">По цене ↑</option>
+          </select>
+        </div>
+
+        <div class="actions-row">
+          <button type="submit">Применить</button>
+          <button type="button" id="homeResetButton" class="secondary-button">Сбросить</button>
+        </div>
+      </form>
+
+      <div id="homeList" class="cards-list"></div>
+    </section>
+
+    <!-- Вход -->
+    <section id="page-login" class="page">
+      <h1>Вход</h1>
+      <form id="loginForm" class="card simple-form">
+        <label for="loginValue">Email или телефон</label>
+        <input id="loginValue" name="login" type="text" required>
+
+        <label for="loginPassword">Пароль</label>
+        <input id="loginPassword" name="password" type="password" required>
+
+        <button type="submit">Войти</button>
+      </form>
+    </section>
+
+    <!-- Регистрация -->
+    <section id="page-register" class="page">
+      <h1>Регистрация</h1>
+      <form id="registerForm" class="card simple-form">
+        <label for="registerEmail">Email</label>
+        <input id="registerEmail" name="email" type="email" required>
+
+        <label for="registerPhone">Телефон</label>
+        <input id="registerPhone" name="phone" type="text" required>
+
+        <label for="registerPassword">Пароль</label>
+        <input id="registerPassword" name="password" type="password" minlength="6" required>
+
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+    </section>
+
+    <!-- Профиль -->
+    <section id="page-profile" class="page">
+      <h1>Профиль</h1>
+      <form id="profileForm" class="card simple-form">
+        <label for="profileName">Имя</label>
+        <input id="profileName" name="name" type="text" maxlength="100">
+
+        <label for="profileEmail">Email</label>
+        <input id="profileEmail" name="email" type="email" required>
+
+        <label for="profilePhone">Телефон</label>
+        <input id="profilePhone" name="phone" type="text" required>
+
+        <button type="submit">Сохранить</button>
+      </form>
+    </section>
+
+    <!-- Мои объявления -->
+    <section id="page-my-adverts" class="page">
+      <h1>Мои объявления</h1>
+      <form id="myAdvertsFilterForm" class="card inline-form">
+        <label for="myStatus">Статус</label>
+        <select id="myStatus" name="status">
+          <option value="">Все</option>
+          <option value="draft">draft</option>
+          <option value="moderation">moderation</option>
+          <option value="declined">declined</option>
+          <option value="published">published</option>
+          <option value="archived">archived</option>
+        </select>
+        <button type="submit">Показать</button>
+      </form>
+      <div id="myAdvertsList" class="cards-list"></div>
+    </section>
+
+    <!-- Создание / редактирование -->
+    <section id="page-create" class="page">
+      <h1 id="advertFormTitle">Создать объявление</h1>
+      <form id="advertForm" class="card simple-form">
+        <input type="hidden" id="advertId" name="id">
+
+        <label for="advertTitle">Заголовок</label>
+        <input id="advertTitle" name="title" type="text" maxlength="200" required>
+
+        <label for="advertText">Описание</label>
+        <textarea id="advertText" name="text" maxlength="1000" required></textarea>
+
+        <label for="advertPrice">Цена</label>
+        <input id="advertPrice" name="price" type="number" min="0" step="0.01" required>
+
+        <label for="advertCategory">Категория</label>
+        <select id="advertCategory" name="category_id" required></select>
+
+        <label for="advertPhotos">Фото (через запятую)</label>
+        <textarea id="advertPhotos" name="photos" placeholder="https://site.com/1.jpg, https://site.com/2.jpg" required></textarea>
+
+        <div class="actions-row">
+          <button type="submit">Сохранить</button>
+          <button type="button" id="advertFormResetButton" class="secondary-button">Очистить</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Детали объявления -->
+    <section id="page-details" class="page">
+      <div id="advertDetailsBox" class="card"></div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="page-services" class="page">
+      <h1>Платные услуги</h1>
+      <div id="servicesBox" class="card"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
